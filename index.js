@@ -1,11 +1,14 @@
 console.log('before');
-// Question.
-// getUser(1); // How can we get user object ({ id: id, gitHubUsername: 'ibrahim' }) from getUser function? We can not get user object directly from database because reading object from database take some times. There are 3 patterns to deal with async code  1- Callbacks 2- Promises 3- async/await
-// First we are going to look at callback and how we can use them to get the result of an async operations.
+// How to use a callback to get the user object
+getUser(1, user => {
+  console.log(user);
+});
 console.log('after');
 
-function getUser(id) {
+// callback is a function that we are going to call, when result of an async operation is ready
+function getUser(id, callback) {
   setTimeout(() => {
-    console.log({ id: id, gitHubUsername: 'ibrahim' });
+    console.log('Reading a user from database...');
+    callback({ id: id, gitHubUsername: 'ibrahim' });
   }, 2000);
 }
