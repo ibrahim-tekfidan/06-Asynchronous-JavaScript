@@ -1,7 +1,11 @@
 console.log('before');
-// Because reading a user from database takes some times, we should not block the code. So we need to use async function. setTimout function is not blocking the code. This is simulating async function in javaScript.
-// So when we run this program 'console.log('before')' is executed then we get to the second line. Second line function is scheduling a task to be perform in the future. It doesn't wait or block. Then we g t the third function then third function is executed. And 2 seconds later async setTimout function is executed. So reading a user from database don't block the program.
-setTimeout(() => {
-  console.log('Reading a user from database...');
-}, 2000);
+// Question.
+// getUser(1); // How can we get user object ({ id: id, gitHubUsername: 'ibrahim' }) from getUser function? We can not get user object directly from database because reading object from database take some times. There are 3 patterns to deal with async code  1- Callbacks 2- Promises 3- async/await
+// First we are going to look at callback and how we can use them to get the result of an async operations.
 console.log('after');
+
+function getUser(id) {
+  setTimeout(() => {
+    console.log({ id: id, gitHubUsername: 'ibrahim' });
+  }, 2000);
+}
